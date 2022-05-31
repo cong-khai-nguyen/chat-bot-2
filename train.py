@@ -12,8 +12,7 @@ all_words = []
 tags = []
 # Hold the tokenized pattern and tag
 xy = []
-# Words that will be skipped
-ignore_words = ['?', '!', '.', ',']
+
 for intent in intents['intents']:
     tag = intent['tag']
     tags.append(tag)
@@ -21,3 +20,9 @@ for intent in intents['intents']:
         w = tokenize(pattern)
         all_words.extend(w)
         xy.append((w, tag))
+
+# Words that will be skipped
+ignore_words = ['?', '!', '.', ',']
+all_words = [stem(w) for w in all_words if w not in ignore_words]
+all_words = sorted(set(all_words))
+print(all_words)
