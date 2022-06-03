@@ -1,6 +1,7 @@
 import json
 from nltk_utils import tokenize, stem, bag_of_words
-
+import numpy as np
+import pandas as pd
 with open('intents.json', 'r') as f:
     intents = json.load(f)
 
@@ -39,3 +40,9 @@ for (pattern_sentence, tag) in xy:
     # Getting the location of the tag associated to the pattern in list tags
     label = tags.index(tag)
     y_train.append(label) # CrossEntropyLoss
+
+# Convert to numpy array
+x_train = np.array(x_train)
+y_train = np.array(y_train)
+
+print(y_train)
