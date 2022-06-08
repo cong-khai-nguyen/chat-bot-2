@@ -54,3 +54,8 @@ print(y_train)
 class ChatDataset(Dataset):
     def __int__(self):
         self.n_sample = len(x_train)
+        self.x_data = x_train
+        self.y_data = y_train
+    # dataset[index]
+    def __getitem__(self, index):
+        return self.x_data[index], self.y_data[index]
