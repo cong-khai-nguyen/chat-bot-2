@@ -1,5 +1,4 @@
 import nltk
-from train import ignore_words
 # nltk.download('punkt')
 import numpy as np
 from nltk.stem.porter import PorterStemmer
@@ -13,6 +12,8 @@ def stem(word):
     return stemmer.stem(word.lower())
 
 def bag_of_words(tokenized_sentence, all_words):
+    # Words that will be skipped
+    ignore_words = ['?', '!', '.', ',']
     # Stemmed already tokenized array
     tokenized_sentence = [stem(w) for w in tokenized_sentence if w not in ignore_words]
 
