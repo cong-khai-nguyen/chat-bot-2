@@ -5,6 +5,7 @@ import torch
 import torch.nn as nn
 from torch.utils.data import Dataset, DataLoader
 import pandas as pd
+
 with open('intents.json', 'r') as f:
     intents = json.load(f)
 
@@ -49,3 +50,7 @@ x_train = np.array(x_train)
 y_train = np.array(y_train)
 
 print(y_train)
+
+class ChatDataset(Dataset):
+    def __int__(self):
+        self.n_sample = len(x_train)
