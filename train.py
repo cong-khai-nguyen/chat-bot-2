@@ -53,8 +53,8 @@ y_train = np.array(y_train)
 print(y_train)
 
 class ChatDataset(Dataset):
-    def __int__(self):
-        self.n_sample = len(x_train)
+    def __init__(self):
+        self.n_samples = len(x_train)
         self.x_data = x_train
         self.y_data = y_train
 
@@ -66,10 +66,13 @@ class ChatDataset(Dataset):
     def __len__(self):
         return self.n_samples
 
-# Hyperparameters
+# Hyper parameters
 batch_size = 8
+hidden_size = 10
+output_size = len(tags)
+input_size = len(all_words)
 
 dataset = ChatDataset()
 train_loader = DataLoader(dataset = dataset, batch_size = batch_size, shuffle = True, num_workers=2)
 
-model = torch()
+model = NeuralNet(input_size, hidden_size, output_size)
