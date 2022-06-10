@@ -5,6 +5,7 @@ import torch
 import torch.nn as nn
 from torch.utils.data import Dataset, DataLoader
 import pandas as pd
+from model import NeuralNet
 
 with open('intents.json', 'r') as f:
     intents = json.load(f)
@@ -70,3 +71,5 @@ batch_size = 8
 
 dataset = ChatDataset()
 train_loader = DataLoader(dataset = dataset, batch_size = batch_size, shuffle = True, num_workers=2)
+
+model = torch()
