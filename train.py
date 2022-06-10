@@ -56,6 +56,17 @@ class ChatDataset(Dataset):
         self.n_sample = len(x_train)
         self.x_data = x_train
         self.y_data = y_train
+
     # dataset[index]
+    # return a tuple
     def __getitem__(self, index):
         return self.x_data[index], self.y_data[index]
+
+    def __len__(self):
+        return self.n_samples
+
+# Hyperparameters
+batch_size = 8
+
+dataset = ChatDataset()
+train_loader = DataLoader(dataset = dataset, batch_size = batch_size, shuffle = True, num_workers=2)
