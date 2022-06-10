@@ -77,3 +77,7 @@ train_loader = DataLoader(dataset = dataset, batch_size = batch_size, shuffle = 
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 model = NeuralNet(input_size, hidden_size, output_size).to(device)
+
+# Apply Entropyloss and optimizer
+criterion = nn.CrossEntropyLoss()
+optimizer = torch.optim.Adam(model.parameters(), lr = learning_rate)
