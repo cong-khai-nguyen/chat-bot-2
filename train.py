@@ -75,4 +75,5 @@ input_size = len(all_words)
 dataset = ChatDataset()
 train_loader = DataLoader(dataset = dataset, batch_size = batch_size, shuffle = True, num_workers=2)
 
-model = NeuralNet(input_size, hidden_size, output_size)
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+model = NeuralNet(input_size, hidden_size, output_size).to(device)
