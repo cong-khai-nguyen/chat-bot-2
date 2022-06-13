@@ -68,7 +68,7 @@ class ChatDataset(Dataset):
 
 # Hyper parameters
 batch_size = 8
-hidden_size = 8
+hidden_size = 10
 output_size = len(tags)
 input_size = len(all_words)
 learning_rate = 0.001
@@ -100,5 +100,7 @@ for epoch in range(num_epochs):
         loss.backward()
         optimizer.step()
 
-        if (epoch + 1) % 100 == 0:
-            print(f'epoch {epoch+1}/{num_epochs}, loss={loss.item():.4f}')
+    if (epoch + 1) % 100 == 0:
+        print(f'epoch {epoch+1}/{num_epochs}, loss={loss.item():.4f}')
+
+print(f'final loss, loss={loss.item():.4f}')
