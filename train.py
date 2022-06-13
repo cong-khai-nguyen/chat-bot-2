@@ -71,6 +71,9 @@ batch_size = 8
 hidden_size = 10
 output_size = len(tags)
 input_size = len(all_words)
+learning_rate = 0.001
+num_epochs = 1000
+
 
 dataset = ChatDataset()
 train_loader = DataLoader(dataset = dataset, batch_size = batch_size, shuffle = True, num_workers=2)
@@ -81,3 +84,16 @@ model = NeuralNet(input_size, hidden_size, output_size).to(device)
 # Apply Entropyloss and optimizer
 criterion = nn.CrossEntropyLoss()
 optimizer = torch.optim.Adam(model.parameters(), lr = learning_rate)
+
+for epoch in range(num_epochs):
+    for (words, labels) in train_loader:
+        words = words.to(device)
+        labels = labels.to(device)
+
+        # foward
+        outputs = model(words)
+        loss = criterion(outputs, labels)
+
+        # backward and optimizer step
+        optimizer.zero_grad()
+        loss.backward()
